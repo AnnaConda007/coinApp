@@ -1,11 +1,12 @@
- 
-const Heads = () => { 
 
-    return (
-      <> 
+
+const HeadsComponent = () => {
+
+  return (
+    <>
       Heads
-      </>
-    )
-  }
-  
-  export default Heads
+    </>
+  )
+}
+
+export default HeadsComponent

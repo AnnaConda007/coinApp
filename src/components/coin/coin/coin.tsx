@@ -1,14 +1,30 @@
-import Heads from "../heads/heads"
-import Tails from "../tails/tails"
-import { getRandomNumber } from "../../../utils/get-random-number"
+import HeadsComponent from "../heads/heads";
+import TailsComponent from "../tails/tails";
+import { getRandomNumber } from "../../../utils/get-random-number";
+import { CoinSide } from "../../../enums/coin";
+import { useEffect } from "react";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { RootStoreState } from "../../../redux/store";
+import { setCoinSuccess } from "../../../redux/coin-slice";
 
-const Coin = () => { 
-const medianValue  = 5 
-const FallenSide = getRandomNumber() > medianValue ? Tails : Heads
+const CoinComponent = () => {
+  const selectedCoinSide = useSelector((state: RootStoreState) => state.coin.selectedCoinSide, shallowEqual);
+  const dispatch = useDispatch()
+  const medianValue = 5;
+  const coinMap = {
+    [CoinSide.HEADS]: HeadsComponent,
+    [CoinSide.TAILS]: TailsComponent,
+  };
+  const fallenSide = getRandomNumber() > medianValue ? CoinSide.TAILS : CoinSide.HEADS;
+  const FallenComponent = coinMap[fallenSide];
 
-   return (
- <FallenSide/>
-  )
-}
+  useEffect(() => {
+    if (fallenSide === selectedCoinSide) {
+      dispatch(setCoinSuccess())
+    }
+  }, [fallenSide]);
 
-export default Coin
+  return <FallenComponent />;
+};
+
+export default CoinComponent;

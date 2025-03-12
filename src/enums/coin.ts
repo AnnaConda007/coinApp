@@ -1,6 +1,6 @@
 export enum CoinSide {
-    HEADS = "heads",
-    TAILS = "tails",
+    HEADS = "Heads",
+    TAILS = "Tails",
   }
   
  

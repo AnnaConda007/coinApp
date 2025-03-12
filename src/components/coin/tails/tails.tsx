@@ -1,11 +1,11 @@
- 
-const Tails = () => { 
 
-    return (
-      <> 
+const TailsComponent = () => {
+
+  return (
+    <>
       Tails
-      </>
-    )
-  }
-  
-  export default Tails
+    </>
+  )
+}
+
+export default TailsComponent
