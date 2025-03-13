@@ -1,10 +1,11 @@
 
+import '../coin.css';
 
 const HeadsComponent = () => {
 
   return (
     <>
-      Heads
+      <div className="coin"></div>
     </>
   )
 }

@@ -24,25 +24,25 @@ const coinSlice = createSlice({
       state.selectedCoinSide = action.payload;
       localStorage.setItem("selectedCoinSide", action.payload)
     },
-    setTotalCoinAmount: (state, action: PayloadAction<number>) => {
-      state.TotalCoinAmount = action.payload;
-      localStorage.setItem("TotalCoinAmount", action.payload.toString())
-    },
     resetSelectedCoinSide: (state) => {
       state.selectedCoinSide = null;
       localStorage.setItem("selectedCoinSide", "")
     },
-    setCoinSuccess: (state) => {
+    setTotalCoinAmount: (state, action: PayloadAction<number>) => {
+      state.TotalCoinAmount = action.payload;
+      localStorage.setItem("TotalCoinAmount", action.payload.toString())
+    },
+    setCoinSuccessNum: (state) => {
       const newValue = state.coinSuccessNum + 1
       state.coinSuccessNum = newValue;
     },
-    resetFaceSuccess: (state) => {
+    resetCoinSuccessNum: (state) => {
       state.coinSuccessNum = 0;
     }
 
   }
 });
 
-export const { setSelectedCoinSide, resetSelectedCoinSide, setTotalCoinAmount, setCoinSuccess, resetFaceSuccess } = coinSlice.actions;
+export const { setSelectedCoinSide, resetSelectedCoinSide, setTotalCoinAmount, setCoinSuccessNum, resetCoinSuccessNum } = coinSlice.actions;
 
 export default coinSlice.reducer;

@@ -5,7 +5,7 @@ import { CoinSide } from "../../../enums/coin";
 import { useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootStoreState } from "../../../redux/store";
-import { setCoinSuccess } from "../../../redux/coin-slice";
+import { setCoinSuccessNum } from "../../../redux/coin-slice";
 
 const CoinComponent = () => {
   const selectedCoinSide = useSelector((state: RootStoreState) => state.coin.selectedCoinSide, shallowEqual);
@@ -20,7 +20,7 @@ const CoinComponent = () => {
 
   useEffect(() => {
     if (fallenSide === selectedCoinSide) {
-      dispatch(setCoinSuccess())
+      dispatch(setCoinSuccessNum())
     }
   }, [fallenSide]);
 

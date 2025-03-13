@@ -4,12 +4,12 @@ import Button from "../ui/button/button";
 import { useState } from "react";
 import ResultComponent from "./result";
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
-import { resetFaceSuccess } from "../../redux/coin-slice";
+import { resetCoinSuccessNum } from "../../redux/coin-slice";
+import TrowGameButtonComponent from "../trow-game-button/trow-game-button";
 
 const PlantCoinComponent = () => {
   const dispatch = useDispatch()
   const [resetKey, setResetKey] = useState(0);
-
   const amountCoin = useSelector(
     (state: RootStoreState) => state.coin.TotalCoinAmount,
     shallowEqual
@@ -17,7 +17,7 @@ const PlantCoinComponent = () => {
   const amountCoinArr = Array.from({ length: amountCoin });
 
   const resetGame = () => {
-    dispatch(resetFaceSuccess())
+    dispatch(resetCoinSuccessNum())
     setResetKey((prev) => prev + 1);
   };
 
@@ -33,6 +33,7 @@ const PlantCoinComponent = () => {
       </div>
       <ResultComponent />
       <Button value="еще раз" handleButton={resetGame} />
+      <TrowGameButtonComponent />
     </>
   );
 };
