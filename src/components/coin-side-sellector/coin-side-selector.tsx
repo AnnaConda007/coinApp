@@ -1,5 +1,4 @@
-import Heads from "../coin/heads/heads"
-import Tails from "../coin/tails/tails"
+import Heads from "../coin/coin-side/coin-side"
 import { CoinSide } from "../../enums/coin"
 import { useDispatch } from "react-redux";
 import { setSelectedCoinSide } from "../../redux/coin-slice";
@@ -14,11 +13,11 @@ const CoinSideSelectorComponent = () => {
     <>
       <AmountCoinInput />
       <div onClick={() => selectCoinSide(CoinSide.TAILS)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
-        <Tails />
+        <Heads side={CoinSide.TAILS} />
       </div>
 
       <div onClick={() => selectCoinSide(CoinSide.HEADS)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
-        <Heads />
+        <Heads side={CoinSide.HEADS} />
       </div>
     </>
   )

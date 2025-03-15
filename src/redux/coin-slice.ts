@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CoinSide } from '../enums/coin';
+import { CoinSide, CoinResult } from '../enums/coin';
 
 
 interface CoinSetting {
@@ -39,10 +39,15 @@ const coinSlice = createSlice({
     resetCoinSuccessNum: (state) => {
       state.coinSuccessNum = 0;
     }
+    ,
+    setOneCoinSuccessNum: (state, action: PayloadAction<CoinResult>) => {
+      const result = action.payload === CoinResult.INCREMENT ? 1 : -1;
+      state.coinSuccessNum += result
+    },
 
   }
 });
 
-export const { setSelectedCoinSide, resetSelectedCoinSide, setTotalCoinAmount, setCoinSuccessNum, resetCoinSuccessNum } = coinSlice.actions;
+export const { setSelectedCoinSide, resetSelectedCoinSide, setTotalCoinAmount, setCoinSuccessNum, resetCoinSuccessNum, setOneCoinSuccessNum } = coinSlice.actions;
 
 export default coinSlice.reducer;

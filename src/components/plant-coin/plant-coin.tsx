@@ -1,6 +1,6 @@
 import CoinComponent from "../coin/coin/coin";
 import { RootStoreState } from "../../redux/store";
-import Button from "../ui/button/button";
+import Button from "../shared/button/button";
 import { useState } from "react";
 import ResultComponent from "./result";
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
@@ -14,13 +14,13 @@ const PlantCoinComponent = () => {
     (state: RootStoreState) => state.coin.TotalCoinAmount,
     shallowEqual
   );
+
   const amountCoinArr = Array.from({ length: amountCoin });
 
   const resetGame = () => {
     dispatch(resetCoinSuccessNum())
     setResetKey((prev) => prev + 1);
   };
-
   return (
     <>
       <div key={resetKey}>

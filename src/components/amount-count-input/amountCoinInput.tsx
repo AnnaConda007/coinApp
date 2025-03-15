@@ -1,5 +1,5 @@
 
-import Button from "../ui/button/button";
+import Button from "../shared/button/button";
 import { useDispatch } from "react-redux";
 import { setTotalCoinAmount } from "../../redux/coin-slice";
 import { useNavigate } from "react-router-dom";

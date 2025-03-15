@@ -1,30 +1,51 @@
-import HeadsComponent from "../heads/heads";
-import TailsComponent from "../tails/tails";
+import CoinSideComponent from "../coin-side/coin-side";
 import { getRandomNumber } from "../../../utils/get-random-number";
 import { CoinSide } from "../../../enums/coin";
-import { useEffect } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootStoreState } from "../../../redux/store";
-import { setCoinSuccessNum } from "../../../redux/coin-slice";
+import { setOneCoinSuccessNum } from "../../../redux/coin-slice";
+import { CoinResult } from "../../../enums/coin";
 
 const CoinComponent = () => {
+  const dispatch = useDispatch();
   const selectedCoinSide = useSelector((state: RootStoreState) => state.coin.selectedCoinSide, shallowEqual);
-  const dispatch = useDispatch()
+
+  const [fallenSide, setFallenSide] = useState<CoinSide | null>(null);
+  const [again, setAgain] = useState<boolean | null>(null);
+  const prevFallenSide = useRef<CoinSide | null>(null);
   const medianValue = 5;
-  const coinMap = {
-    [CoinSide.HEADS]: HeadsComponent,
-    [CoinSide.TAILS]: TailsComponent,
-  };
-  const fallenSide = getRandomNumber() > medianValue ? CoinSide.TAILS : CoinSide.HEADS;
-  const FallenComponent = coinMap[fallenSide];
+
+  const generateNewSide = useCallback(() => {
+    return getRandomNumber() > medianValue ? CoinSide.TAILS : CoinSide.HEADS;
+  }, [medianValue]);
+
 
   useEffect(() => {
-    if (fallenSide === selectedCoinSide) {
-      dispatch(setCoinSuccessNum())
+    const newSide = generateNewSide();
+    setFallenSide(newSide);
+    prevFallenSide.current = newSide;
+    if (newSide === selectedCoinSide) {
+      dispatch(setOneCoinSuccessNum(CoinResult.INCREMENT));
     }
-  }, [fallenSide]);
+  }, [dispatch, selectedCoinSide, generateNewSide]);
 
-  return <FallenComponent />;
+
+  useEffect(() => {
+    if (!again) return
+    const newSide = generateNewSide();
+    if (prevFallenSide.current == newSide) return
+    const result =
+      newSide === selectedCoinSide ? CoinResult.INCREMENT : CoinResult.DECREMENT;
+    dispatch(setOneCoinSuccessNum(result));
+    setFallenSide(newSide);
+    prevFallenSide.current = newSide;
+
+  }, [again, dispatch, selectedCoinSide, generateNewSide]);
+
+  return (
+    <CoinSideComponent side={fallenSide as CoinSide} handleCoin={() => setAgain((prev) => !prev)} />
+  );
 };
 
 export default CoinComponent;
