@@ -6,6 +6,7 @@ import ResultComponent from "./result";
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { resetCoinSuccessNum } from "../../redux/coin-slice";
 import TrowGameButtonComponent from "../trow-game-button/trow-game-button";
+import refreshIcon from "../../assets/free-icon-refresh-5757986.png";
 
 const PlantCoinComponent = () => {
   const dispatch = useDispatch()
@@ -32,10 +33,17 @@ const PlantCoinComponent = () => {
         ))}
       </div>
       <ResultComponent />
-      <Button value="еще раз" handleButton={resetGame} />
       <TrowGameButtonComponent />
+
+      <Button handleButton={resetGame}>
+        <img src={refreshIcon} alt="Сбросить игру" width="20" height="20" />
+
+      </Button>
+
     </>
   );
 };
 
 export default PlantCoinComponent;
+
+

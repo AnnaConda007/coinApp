@@ -1,13 +1,17 @@
-interface  ButtonProps{
-    handleButton?:()=>void;
-    value:string
+import "./button-style.ts"
+import { ButtonStyled } from "./button-style";
+
+interface ButtonProps {
+    handleButton?: () => void;
+    children: React.ReactNode;
 }
 
-const Button : React.FC<ButtonProps>= ({handleButton, value}) => {   
- 
-   return (
-    <button onClick={handleButton}>{value}</button> 
-   )
+const Button: React.FC<ButtonProps> = ({ handleButton, children }) => {
+
+    return (
+        <ButtonStyled onClick={handleButton}>
+            {children}
+        </ButtonStyled>)
 }
 
 export default Button

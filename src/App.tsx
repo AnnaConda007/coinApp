@@ -11,7 +11,6 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={<CoinSideSelectorComponent />} />
           <Route path="/toss" element={<PlantCoinComponent />} />
         </Routes>

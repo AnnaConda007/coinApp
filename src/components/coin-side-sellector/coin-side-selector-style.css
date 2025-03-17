@@ -1,0 +1,14 @@
+.settings {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.coin-side {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+
+}
