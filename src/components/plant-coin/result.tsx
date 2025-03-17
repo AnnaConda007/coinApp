@@ -2,14 +2,16 @@ import { useSelector } from "react-redux";
 import { RootStoreState } from "../../redux/store";
 import CoinSideComponent from "../coin/coin-side/coin-side";
 import { CoinSide } from "../../enums/coin";
-
+import "./sssss.css"
 const ResultComponent = () => {
     const { coinSuccessNum, selectedCoinSide, TotalCoinAmount } = useSelector((state: RootStoreState) => state.coin)
 
     return (<>
-        ------------------------------------------
-        <CoinSideComponent side={selectedCoinSide as CoinSide} />
-        выпал {coinSuccessNum} из {TotalCoinAmount}
+        <div className="result">
+            <CoinSideComponent side={selectedCoinSide as CoinSide} />
+            выпал {coinSuccessNum} из {TotalCoinAmount}
+        </div>
+
     </>
 
     )

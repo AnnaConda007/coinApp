@@ -3,7 +3,6 @@ import { CoinSide } from "../../enums/coin"
 import { useDispatch } from "react-redux";
 import { setSelectedCoinSide } from "../../redux/coin-slice";
 import AmountCoinInput from "../amount-count-input/amountCoinInput";
-import "./coin-side-selector-style.css"
 import { SettingsStyled, CoinSideStyled } from "./coin-side-selector-style";
 
 const CoinSideSelectorComponent = () => {

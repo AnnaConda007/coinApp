@@ -13,7 +13,7 @@ export const CoinStyled = styled.div`
   padding: 5px; 
   transform-style: preserve-3d;
 perspective: 500px;
-
+ 
 `;
 
 export const CoinBeforeStyled = styled.div <{ $coinImage: string }>`
@@ -27,9 +27,16 @@ export const CoinBeforeStyled = styled.div <{ $coinImage: string }>`
   transform: translate(-50%, -50%);
   background: url(${props => props.$coinImage}) no-repeat center,              radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.3), transparent);
                radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.3), transparent);
-
   background-size: 80%;
   box-sizing: content-box;
   opacity: 0.8; 
   
+`;
+
+
+export const Wrap = styled.div <{ $padding: string }>`
+   width: 170px;
+  height: 170px; 
+ padding:${props => props.$padding}
+
 `;

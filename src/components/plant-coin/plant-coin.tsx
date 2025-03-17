@@ -7,7 +7,7 @@ import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { resetCoinSuccessNum } from "../../redux/coin-slice";
 import TrowGameButtonComponent from "../trow-game-button/trow-game-button";
 import refreshIcon from "../../assets/free-icon-refresh-5757986.png";
-
+import "./sssss.css"
 const PlantCoinComponent = () => {
   const dispatch = useDispatch()
   const [resetKey, setResetKey] = useState(0);
@@ -24,21 +24,28 @@ const PlantCoinComponent = () => {
   };
   return (
     <>
-      <div key={resetKey}>
-        {amountCoinArr.map((_, i) => (
-          <div key={i}>
-            <CoinComponent />
-            {i + 1}
-          </div>
-        ))}
+      <div className="containerCoins">
+        <div className="coins" key={resetKey}>
+          {amountCoinArr.map((_, i) => (
+            <div key={i}>
+              <CoinComponent />
+            </div>
+          ))}
+        </div>
+
+        <ResultComponent />
+
+        <div className="buttons">
+
+          <TrowGameButtonComponent />
+
+          <Button handleButton={resetGame}>
+            <img src={refreshIcon} alt="Сбросить игру" width="20" height="20" />
+
+          </Button>
+        </div>
+
       </div>
-      <ResultComponent />
-      <TrowGameButtonComponent />
-
-      <Button handleButton={resetGame}>
-        <img src={refreshIcon} alt="Сбросить игру" width="20" height="20" />
-
-      </Button>
 
     </>
   );

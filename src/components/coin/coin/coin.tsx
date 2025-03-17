@@ -45,6 +45,7 @@ const CoinComponent = () => {
 
   return (
     <CoinSideComponent side={fallenSide as CoinSide} handleCoin={() => setAgain((prev) => !prev)} />
+
   );
 };
 
