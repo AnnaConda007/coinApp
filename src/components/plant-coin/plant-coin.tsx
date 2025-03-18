@@ -2,12 +2,13 @@ import CoinComponent from "../coin/coin/coin";
 import { RootStoreState } from "../../redux/store";
 import Button from "../shared/button/button";
 import { useState } from "react";
-import ResultComponent from "./result";
+import ResultComponent from "./result/result";
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { resetCoinSuccessNum } from "../../redux/coin-slice";
 import TrowGameButtonComponent from "../trow-game-button/trow-game-button";
 import refreshIcon from "../../assets/free-icon-refresh-5757986.png";
-import "./sssss.css"
+import { Buttons, Coins, PlantCoin } from "./plant-coinplant-style";
+
 const PlantCoinComponent = () => {
   const dispatch = useDispatch()
   const [resetKey, setResetKey] = useState(0);
@@ -23,31 +24,29 @@ const PlantCoinComponent = () => {
     setResetKey((prev) => prev + 1);
   };
   return (
-    <>
-      <div className="containerCoins">
-        <div className="coins" key={resetKey}>
-          {amountCoinArr.map((_, i) => (
-            <div key={i}>
-              <CoinComponent />
-            </div>
-          ))}
-        </div>
+    <PlantCoin >
+      <Coins key={resetKey}>
+        {amountCoinArr.map((_, i) => (
+          <div key={i}>
+            <CoinComponent />
+          </div>
+        ))}
+      </Coins>
 
-        <ResultComponent />
+      <ResultComponent />
 
-        <div className="buttons">
+      <Buttons>
 
-          <TrowGameButtonComponent />
+        <TrowGameButtonComponent />
 
-          <Button handleButton={resetGame}>
-            <img src={refreshIcon} alt="Сбросить игру" width="20" height="20" />
+        <Button handleButton={resetGame}>
+          <img src={refreshIcon} alt="Сбросить игру" width="20" height="20" />
 
-          </Button>
-        </div>
+        </Button>
+      </Buttons>
 
-      </div>
+    </PlantCoin>
 
-    </>
   );
 };
 

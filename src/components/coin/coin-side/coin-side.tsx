@@ -4,8 +4,16 @@ import tailImage from "../../../assets/free-icon-man-10060478.png";
 import { CoinStyled, Wrap, CoinBeforeStyled } from './coin-side-style';
 import { CoinSide } from '../../../enums/coin';
 import './coin-side-style';
+import { coinSize } from "./coin-side-style";
 
-const CoinSideComponent = ({ side, handleCoin }: { side: CoinSide, handleCoin?: () => void }) => {
+interface CoinSideComponentProps {
+  side: CoinSide,
+  handleCoin?: () => void,
+  coinSize: coinSize
+}
+
+
+const CoinSideComponent: React.FC<CoinSideComponentProps> = ({ side, handleCoin, coinSize }) => {
   const coinSideMap = {
     [CoinSide.HEADS]: headImage,
     [CoinSide.TAILS]: tailImage,
@@ -23,8 +31,8 @@ const CoinSideComponent = ({ side, handleCoin }: { side: CoinSide, handleCoin?: 
 
   return (
     <Wrap $padding={getRandomPadding()}>
-      <CoinStyled onClick={handleCoin}>
-        <CoinBeforeStyled $coinImage={coinImg} />
+      <CoinStyled $coinSize={coinSize} onClick={handleCoin}>
+        <CoinBeforeStyled $coinSize={coinSize} $coinImage={coinImg} />
       </CoinStyled>
     </Wrap>
 
