@@ -1,12 +1,12 @@
-import CoinSideComponent from "../coin/coin-side/coin-side"
+import CoinSideComponent from "../../components/coin/coin-side/coin-side";
 import { CoinSide } from "../../enums/coin"
 import { useDispatch } from "react-redux";
 import { setSelectedCoinSide } from "../../redux/coin-slice";
-import AmountCoinInput from "../amount-count-input/amountCoinInput";
-import { SettingsStyled, CoinSideStyled } from "./coin-side-selector-style";
-import { coinSize } from "../coin/coin-side/coin-side-style";
+import AmountCoinInput from "../../components/amount-count-input/amountCoinInput";
+import { SettingsStyled, CoinSideStyled } from "./coin-settings-style";
+import { CoinSize } from "../../components/coin/coin-side/coin-side-style";
 
-const CoinSideSelectorComponent = () => {
+const CoinSettingsComponent = () => {
 
   const dispatch = useDispatch();
   const selectCoinSide = (side: CoinSide): void => { dispatch(setSelectedCoinSide(side)) }
@@ -19,10 +19,10 @@ const CoinSideSelectorComponent = () => {
 
       <CoinSideStyled >
         <div onClick={() => selectCoinSide(CoinSide.TAILS)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
-          <CoinSideComponent coinSize={coinSize.min} side={CoinSide.TAILS} />
+          <CoinSideComponent coinSize={CoinSize.min} side={CoinSide.TAILS} />
         </div>
         <div onClick={() => selectCoinSide(CoinSide.HEADS)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
-          <CoinSideComponent coinSize={coinSize.min} side={CoinSide.HEADS} />
+          <CoinSideComponent coinSize={CoinSize.min} side={CoinSide.HEADS} />
         </div>
       </CoinSideStyled>
 
@@ -34,4 +34,4 @@ const CoinSideSelectorComponent = () => {
   )
 }
 
-export default CoinSideSelectorComponent
+export default CoinSettingsComponent

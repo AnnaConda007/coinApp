@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const PlantCoin = styled.div`
- background-color: rgb(103, 103, 219);
-    height: 100%;
+export const FlippedCoinsContainer = styled.div`
+     height: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    
 
 `;
 
 
 export const Coins = styled.div`
-    background-color: aqua;
-    margin: 10px;
-    width: 100%;
+margin-top:20px;
+      width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -22,7 +22,7 @@ export const Coins = styled.div`
 
 export const Buttons = styled.div`
  display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
 `;
 

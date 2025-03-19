@@ -2,7 +2,7 @@ import { resetCoinSuccessNum, resetSelectedCoinSide, setTotalCoinAmount } from "
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Button from "../shared/button/button";
-import trowIcon from "../../assets/free-icon-reset-9899372.png";
+import trowIcon from "../../assets/free-icon-close-169242.png";
 
 const TrowGameButtonComponent = () => {
     const dispatch = useDispatch()

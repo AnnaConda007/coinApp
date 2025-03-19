@@ -1,15 +1,15 @@
-import CoinComponent from "../coin/coin/coin";
+import CoinComponent from "../../components/coin/coin/coin";
 import { RootStoreState } from "../../redux/store";
-import Button from "../shared/button/button";
+import Button from "../../components/shared/button/button";
 import { useState } from "react";
-import ResultComponent from "./result/result";
+import ResultComponent from "../../components/result/result";
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { resetCoinSuccessNum } from "../../redux/coin-slice";
-import TrowGameButtonComponent from "../trow-game-button/trow-game-button";
+import TrowGameButtonComponent from "../../components/trow-game-button/trow-game-button";
 import refreshIcon from "../../assets/free-icon-refresh-5757986.png";
-import { Buttons, Coins, PlantCoin } from "./plant-coinplant-style";
+import { Buttons, Coins, FlippedCoinsContainer } from "./flipped-coin-style";
 
-const PlantCoinComponent = () => {
+const FlippedCoinComponent = () => {
   const dispatch = useDispatch()
   const [resetKey, setResetKey] = useState(0);
   const amountCoin = useSelector(
@@ -24,14 +24,8 @@ const PlantCoinComponent = () => {
     setResetKey((prev) => prev + 1);
   };
   return (
-    <PlantCoin >
-      <Coins key={resetKey}>
-        {amountCoinArr.map((_, i) => (
-          <div key={i}>
-            <CoinComponent />
-          </div>
-        ))}
-      </Coins>
+    <FlippedCoinsContainer >
+
 
       <ResultComponent />
 
@@ -40,16 +34,24 @@ const PlantCoinComponent = () => {
         <TrowGameButtonComponent />
 
         <Button handleButton={resetGame}>
-          <img src={refreshIcon} alt="Сбросить игру" width="20" height="20" />
+          <img src={refreshIcon} alt="Сбросить игру" width="40" height="40" />
 
         </Button>
       </Buttons>
 
-    </PlantCoin>
+      <Coins key={resetKey}>
+        {amountCoinArr.map((_, i) => (
+          <div key={i}>
+            <CoinComponent />
+          </div>
+        ))}
+      </Coins>
+
+    </FlippedCoinsContainer>
 
   );
 };
 
-export default PlantCoinComponent;
+export default FlippedCoinComponent;
 
 

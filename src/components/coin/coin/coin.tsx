@@ -6,7 +6,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { RootStoreState } from "../../../redux/store";
 import { setOneCoinSuccessNum } from "../../../redux/coin-slice";
 import { CoinResult } from "../../../enums/coin";
-import { coinSize } from "../coin-side/coin-side-style";
+import { CoinSize } from "../coin-side/coin-side-style";
 
 const CoinComponent = () => {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const CoinComponent = () => {
   }, [again, dispatch, selectedCoinSide, generateNewSide]);
 
   return (
-    <CoinSideComponent coinSize={coinSize.max} side={fallenSide as CoinSide} handleCoin={() => setAgain((prev) => !prev)} />
+    <CoinSideComponent coinSize={CoinSize.max} side={fallenSide as CoinSide} handleCoin={() => setAgain((prev) => !prev)} />
 
   );
 };

@@ -5,5 +5,5 @@ export const ButtonStyled = styled.button`
     border: none;
     padding: 5px;
     cursor: pointer; 
-    border-radius: 3px;
+    border-radius: 50%;
     `;
