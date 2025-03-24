@@ -27,16 +27,22 @@ const CoinSideComponent: React.FC<CoinSideComponentProps> = ({ side, handleCoin,
     const left = Math.floor(Math.random() * 50);
     return `${top}px ${right}px ${bottom}px ${left}px`;
   };
+  const duration = coinSize === CoinSize.min ? undefined : +(Math.random() * 2 + 1).toFixed(2);
 
   const coinImg = coinSideMap[side]
 
+
   return (
     <Wrap $padding={getRandomPadding()} $coinSize={coinSize}>
-      <CoinStyled $coinSize={coinSize} onClick={handleCoin}>
+      <CoinStyled
+        $coinSize={coinSize}
+        $duration={duration}
+        onClick={handleCoin}
+      >
         <CoinBeforeStyled $coinSize={coinSize} $coinImage={coinImg} />
       </CoinStyled>
     </Wrap>
-
   );
+
 };
 export default CoinSideComponent 

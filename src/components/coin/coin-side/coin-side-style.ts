@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import background from "../../../assets/tekstura-metalla-347.webp";
+import styled, { keyframes, css } from 'styled-components';
 
 export enum CoinSize {
   min = "min",
@@ -7,7 +7,21 @@ export enum CoinSize {
 }
 
 
-export const CoinStyled = styled.div <{ $coinSize: CoinSize }>`
+const coinFlip = keyframes`
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(0);
+  }
+  30% {
+    transform: rotateX(180deg)  rotateY(180deg) translateY(120px) scale(1.2);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(180deg) scale(0.9);;
+
+   }
+`;
+
+
+export const CoinStyled = styled.div <{ $coinSize: CoinSize, $duration?: number; }>`
   width: ${props => props.$coinSize === CoinSize.max ? "120px" : "100px"};
   height:  ${props => props.$coinSize === CoinSize.max ? "120px" : "100px"};
   position: relative;
@@ -15,9 +29,14 @@ export const CoinStyled = styled.div <{ $coinSize: CoinSize }>`
   box-shadow: 5px 10px 10px black, inset 0px 0px 5px rgba(255, 255, 255, 0.935);
   background: url(${background}) no-repeat center;
   background-size: cover;
-  padding: 5px;  
- 
-`;
+  padding: 5px;   
+  animation: ${({ $duration }) =>
+    $duration
+      ? css`${coinFlip} ${$duration}s ease-out forwards`
+      : "none"};
+  
+
+   `;
 
 export const CoinBeforeStyled = styled.div <{ $coinSize: CoinSize, $coinImage: string }>`
   content: "";
