@@ -35,7 +35,7 @@ const CoinComponent = () => {
   useEffect(() => {
     if (!again) return
     const newSide = generateNewSide();
-    if (prevFallenSide.current == newSide) return
+    if (prevFallenSide.current === newSide) return
     const result =
       newSide === selectedCoinSide ? CoinResult.INCREMENT : CoinResult.DECREMENT;
     dispatch(setOneCoinSuccessNum(result));
