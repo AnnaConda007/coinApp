@@ -5,6 +5,7 @@ import store from './redux/store';
 import FlippedCoinComponent from './pages/flipped-coins-page/flipped-coin';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { Scene } from './components/coin/coin-side/dd';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<CoinSettingsComponent />} />
           <Route path="/toss" element={<FlippedCoinComponent />} />
+
+
         </Routes>
 
       </BrowserRouter>

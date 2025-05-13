@@ -1,8 +1,16 @@
-export const theme: CoinStyle = {
+export const themeApp: CoinStyle = {
     colors: {
-        primary: "rgb(225, 172, 227)",
-        secondary: "rgb(225, 172, 227)",
-        dark: "rgba(0, 0, 0, 0.3)"
+        border_main: " rgb(71,0,185);",
+        border_hover: "rgb(81, 16, 185);",
+        border_active: "rgb(85, 31, 171)",
+        background_main: "#030016",
+        background_second: "#10003F",
+        text: "rgb(255, 255, 255)",
+        border_main_second: "rgb(44,0,143)",
+
+
+
+
     },
 };
 
@@ -12,8 +20,13 @@ interface CoinStyle {
 }
 
 interface Colors {
-    primary: string,
-    secondary: string,
-    dark: string,
+    border_main: string,
+    border_hover: string,
+    border_active: string,
+    background_main: string,
+    background_second: string,
+    text: string;
+    border_main_second: string
+
 }
 

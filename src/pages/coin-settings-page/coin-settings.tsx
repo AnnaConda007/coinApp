@@ -5,7 +5,7 @@ import { setSelectedCoinSide } from "../../redux/coin-slice";
 import SettingCoinInput from "../../components/setting-count/setting-coin";
 import { SettingsStyled, CoinSideStyled } from "./coin-settings-style";
 import { CoinSize } from "../../components/coin/coin-side/coin-side-style";
-
+import { Scene } from "../../components/coin/coin-side/dd";
 const CoinSettingsComponent = () => {
 
   const dispatch = useDispatch();
@@ -13,14 +13,6 @@ const CoinSettingsComponent = () => {
 
   return (
     <SettingsStyled  >
-      <CoinSideStyled >
-        <div onClick={() => selectCoinSide(CoinSide.TAILS)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
-          <CoinSideComponent coinSize={CoinSize.min} side={CoinSide.TAILS} />
-        </div>
-        <div onClick={() => selectCoinSide(CoinSide.HEADS)} role="button" tabIndex={0} style={{ cursor: 'pointer' }}>
-          <CoinSideComponent coinSize={CoinSize.min} side={CoinSide.HEADS} />
-        </div>
-      </CoinSideStyled>
       <SettingCoinInput />
     </SettingsStyled>
   )

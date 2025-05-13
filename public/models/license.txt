@@ -1,0 +1,8 @@
+Model Information:
+* title:	Coin 1 Ruble
+* source:	https://sketchfab.com/3d-models/coin-1-ruble-8561611514e14c61b5582c5c95d103a9
+* author:	Zende (https://sketchfab.com/Zende)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
