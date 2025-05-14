@@ -1,5 +1,4 @@
 
-import Button from "../shared/button/button";
 import { useDispatch } from "react-redux";
 import { setTotalCoinAmount } from "../../redux/coin-slice";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +7,9 @@ import { Container, InputContainer, Input, InputBtn } from "./setting-coin-style
 import { useSelector, shallowEqual } from "react-redux";
 import { RootStoreState } from "../../redux/store";
 import FlipButton from "../shared/button/flip-button/flip-button";
-import { Scene } from "../coin/coin-side/dd";
-import { number } from "framer-motion";
+import { CoinScene } from "../coin/coin-side/coin-scene";
 
-const SettingCoinInput = () => {
+const SettingCoin = () => {
   const dispatch = useDispatch();
   const selectedSide = useSelector(
     (state: RootStoreState) => state.coin.selectedCoinSide,
@@ -60,7 +58,7 @@ const SettingCoinInput = () => {
 
   return (
     <Container>
-      <Scene pulse={coinScale} />
+      <CoinScene pulse={coinScale} orbit={true} />
       <InputContainer isActive={isActive}
         onFocus={() => setIsActive(true)}
         onBlur={(e) => {
@@ -90,7 +88,7 @@ const SettingCoinInput = () => {
 };
 
 
-export default SettingCoinInput
+export default SettingCoin
 
 
 

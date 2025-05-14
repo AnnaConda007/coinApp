@@ -1,11 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootStoreState } from "../../redux/store";
-import CoinSideComponent from "../coin/coin-side/coin-side";
 import { CoinSide } from "../../enums/coin";
 import { Result, TextResult } from "./result-style";
-import { CoinSize } from "../coin/coin-side/coin-side-style";
 import { useState, useEffect } from "react";
-
+import { CoinScene } from "../coin/coin-side/coin-scene";
 const ResultComponent = () => {
     const { coinSuccessNum, selectedCoinSide, TotalCoinAmount } = useSelector((state: RootStoreState) => state.coin)
     const [currentSuccessNum, setCurrentSuccessNum] = useState<null | number>(null)
@@ -21,7 +19,7 @@ const ResultComponent = () => {
 
     return (<>
         <Result  >
-            <CoinSideComponent coinSize={CoinSize.min} side={selectedCoinSide as CoinSide} />
+            <CoinScene pulse={60} side={selectedCoinSide as CoinSide} />
             <TextResult>
                 выпал {currentSuccessNum ? `${currentSuccessNum}` : ""} из {TotalCoinAmount}
             </TextResult>

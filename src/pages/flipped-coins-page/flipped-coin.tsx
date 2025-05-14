@@ -8,6 +8,7 @@ import { resetCoinSuccessNum } from "../../redux/coin-slice";
 import TrowGameButtonComponent from "../../components/trow-game-button/trow-game-button";
 import refreshIcon from "../../assets/free-icon-refresh-5757986.png";
 import { Buttons, Coins, FlippedCoinsContainer } from "./flipped-coin-style";
+import { CoinScene } from "../../components/coin/coin-side/coin-scene";
 
 const FlippedCoinComponent = () => {
   const dispatch = useDispatch()

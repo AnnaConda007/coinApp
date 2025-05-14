@@ -1,22 +1,35 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, useHelper } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { setSelectedCoinSide } from "../../../redux/coin-slice";
-import { CoinSide } from "../../../enums/coin";
 import { useDispatch } from "react-redux";
-
+import { CoinSide } from "../../../enums/coin";
+import { clone } from 'three/examples/jsm/utils/SkeletonUtils';
 
 interface CoinModelProps {
     scale: number;
+    side: CoinSide;
+
 }
-const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale }, ref) => {
+const coinMap: Record<CoinSide, [number, number, number]> = {
+    [CoinSide.HEADS]: [0, 0, 0],
+    [CoinSide.TAILS]: [0, Math.PI, 0],
+};
+
+
+const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, side }, ref) => {
     const { scene } = useGLTF('/models/scene.gltf');
+    const cloned = useRef<THREE.Object3D>(clone(scene)); // 👈 клонируем объект
 
-    return <primitive object={scene} ref={ref} scale={scale} />;
+    useEffect(() => {
+        const [x, y, z] = coinMap[side];
+        cloned.current.rotation.set(x, y, z);
+    }, [side]);
+
+    return <primitive object={cloned.current} ref={ref} scale={scale} />;
 });
-
 
 
 
@@ -45,7 +58,7 @@ const CoinLogic = ({ coinRef }: { coinRef: React.RefObject<THREE.Object3D> }) =>
 
 
 
-export const Scene = ({ pulse }: { pulse: number }) => {
+export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false }: { pulse: number; side?: CoinSide, orbit?: boolean }) => {
 
     const coinRef = useRef<THREE.Object3D>(null!);
 
@@ -58,15 +71,12 @@ export const Scene = ({ pulse }: { pulse: number }) => {
             <directionalLight color="#7b6597" position={[0, 1, -2]} intensity={12} />
             <directionalLight color="#7b6597" position={[0, 1, 2]} intensity={12} />
 
-            <CoinModel ref={coinRef} scale={pulse} />
+            <CoinModel ref={coinRef} scale={pulse} side={side} />
             <CoinLogic coinRef={coinRef} />
-
-            <OrbitControls minDistance={3} />
+            {orbit && (<OrbitControls minDistance={3} />
+            )}
         </Canvas>
     );
 };
 
-function dispatch(arg0: any) {
-    throw new Error("Function not implemented.");
-}
 

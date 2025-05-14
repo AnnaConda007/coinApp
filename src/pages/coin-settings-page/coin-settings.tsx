@@ -1,19 +1,11 @@
-import CoinSideComponent from "../../components/coin/coin-side/coin-side";
-import { CoinSide } from "../../enums/coin"
-import { useDispatch } from "react-redux";
-import { setSelectedCoinSide } from "../../redux/coin-slice";
-import SettingCoinInput from "../../components/setting-count/setting-coin";
-import { SettingsStyled, CoinSideStyled } from "./coin-settings-style";
-import { CoinSize } from "../../components/coin/coin-side/coin-side-style";
-import { Scene } from "../../components/coin/coin-side/dd";
-const CoinSettingsComponent = () => {
+import SettingCoin from "../../components/setting-count/setting-coin";
+import { SettingsStyled } from "./coin-settings-style";
 
-  const dispatch = useDispatch();
-  const selectCoinSide = (side: CoinSide): void => { dispatch(setSelectedCoinSide(side)) }
+const CoinSettingsComponent = () => {
 
   return (
     <SettingsStyled  >
-      <SettingCoinInput />
+      <SettingCoin />
     </SettingsStyled>
   )
 }

@@ -8,8 +8,3 @@ justify-content: center;
 align-items:center;
 `;
 
-export const CoinSideStyled = styled.div` 
-display: flex;
-    justify-content: space-around;
-    padding: 30px;
-`;
