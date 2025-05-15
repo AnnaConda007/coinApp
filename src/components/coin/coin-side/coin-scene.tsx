@@ -64,12 +64,13 @@ export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false }: { pul
 
     return (
 
-        <Canvas style={{
-            width: '300px',
-            height: '300px',
-        }} camera={{ position: [0, 0, 3] }}>
-            <directionalLight color="#7b6597" position={[0, 1, -2]} intensity={12} />
-            <directionalLight color="#7b6597" position={[0, 1, 2]} intensity={12} />
+        <Canvas dpr={[1, 1.5]}
+            style={{
+                width: '300px',
+                height: '300px',
+            }} camera={{ position: [0, 0, 3] }}>
+            <directionalLight color="#dbc6f7" position={[0, 1, -2]} intensity={3} />
+            <directionalLight color="#dbc6f7" position={[0, 1, 2]} intensity={3} />
 
             <CoinModel ref={coinRef} scale={pulse} side={side} />
             <CoinLogic coinRef={coinRef} />
