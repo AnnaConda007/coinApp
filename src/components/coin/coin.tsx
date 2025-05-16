@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootStoreState } from "../../redux/store";
 import { CoinScene } from "../coin-scene/coin-scene";
+import { SpanStyled, Container } from "./coin-style";
 
 const CoinComponent = () => {
   const { selectedCoinSide, TotalCoinAmount } = useSelector((state: RootStoreState) => state.coin)
@@ -38,16 +39,18 @@ const CoinComponent = () => {
 
 
   return (
-    <>
+    <Container>
+
       <CoinScene pulse={100} rotate={rotate} side={fallenSide as CoinSide} />
 
 
+      <SpanStyled>
+        {selectedCoinSide} выпал {successSum} из {TotalCoinAmount}
+      </SpanStyled>
 
-      {selectedCoinSide} выпал {successSum} из {TotalCoinAmount}
 
 
-
-    </>
+    </Container>
   );
 };
 

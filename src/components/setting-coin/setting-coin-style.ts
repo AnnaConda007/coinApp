@@ -9,3 +9,9 @@ export const Container = styled.div`
 `;
 
 
+
+export const MainButtonContainerStyled = styled.div`
+     display: flex;
+    justify-content: center;
+ height:40px;
+  `;

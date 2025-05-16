@@ -1,10 +1,10 @@
 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Container } from "./setting-coin-style";
+import { Container, MainButtonContainerStyled } from "./setting-coin-style";
 import { useSelector, shallowEqual } from "react-redux";
 import { RootStoreState } from "../../redux/store";
-import MainButton from "../shared/main-button/main-button";
+import MainButton from "../../shared/main-button/main-button";
 import { CoinScene } from "../coin-scene/coin-scene";
 import SettingInputComponent from "../count-input/count-input";
 
@@ -18,6 +18,7 @@ const SettingCoin = () => {
   const amountCoin = useSelector((state: RootStoreState) => state.coin.TotalCoinAmount);
   const [coinScale, setCoinScale] = useState(150);
   const nullValue = "0"
+
   const coinPulseAnimate = () => {
     setCoinScale(152);
     setTimeout(() => {
@@ -31,12 +32,13 @@ const SettingCoin = () => {
     <Container>
       <CoinScene pulse={coinScale} orbit={true} />
       <SettingInputComponent coinPulseAnimate={coinPulseAnimate} />
-
-      {selectedSide && amountCoin.toString() !== nullValue && (
-        <MainButton key={amountCoin}
-          text={"FLIP"} handleButton={() => navigate("/toss")}>
-        </MainButton>
-      )}
+      <MainButtonContainerStyled>
+        {selectedSide && amountCoin.toString() !== nullValue && (
+          <MainButton key={amountCoin}
+            text={"flip"} handleButton={() => navigate("/toss")}>
+          </MainButton>
+        )}
+      </MainButtonContainerStyled>
 
 
     </Container>

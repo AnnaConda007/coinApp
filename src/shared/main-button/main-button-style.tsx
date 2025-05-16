@@ -1,15 +1,5 @@
 import styled from 'styled-components';
-import { themeApp } from '../../../style-config';
 import { motion } from 'framer-motion';
-
-export const MainButtonContainerStyled = styled.div`
-     display: flex;
-    justify-content: center;
- width: 100%;
-height:40px;
- width: 100%;
-height: 40px;
- `;
 
 
 export const MainButtonStyled = styled(motion.button)`
@@ -22,8 +12,8 @@ color: white;
  border-radius: 10px;
 font-size: 15px;
 font-weight:600;
- 
- 
+ height: 40px;
+ text-transform:uppercase
 
 `
 

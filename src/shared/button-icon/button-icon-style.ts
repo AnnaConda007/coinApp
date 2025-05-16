@@ -6,4 +6,5 @@ export const ButtonIconStyled = styled.button`
     padding: 5px;
     cursor: pointer; 
     border-radius: 50%;
-    `;
+    color: red;
+      `;

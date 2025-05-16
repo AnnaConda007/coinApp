@@ -7,6 +7,7 @@ import { setSelectedCoinSide } from "../../redux/coin-slice";
 import { useDispatch } from "react-redux";
 import { CoinSide } from "../../enums/coin";
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils';
+import { themeApp } from "../../style-config";
 
 interface CoinModelProps {
     scale: number;
@@ -102,8 +103,8 @@ export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate 
                 width: '300px',
                 height: '300px',
             }} camera={{ position: [0, 0, 3] }}>
-            <directionalLight color="#dbc6f7" position={[0, 1, -2]} intensity={3} />
-            <directionalLight color="#dbc6f7" position={[0, 1, 2]} intensity={3} />
+            <directionalLight color={themeApp.colors.coin_color} position={[0, 1, -2]} intensity={3} />
+            <directionalLight color={themeApp.colors.coin_color} position={[0, 1, 2]} intensity={3} />
 
             <CoinModel ref={coinRef} scale={pulse} side={side} rotate={rotate} />
             {orbit && <CoinLogic coinRef={coinRef} />

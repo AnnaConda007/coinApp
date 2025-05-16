@@ -7,6 +7,7 @@ export const themeApp: CoinStyle = {
         background_second: "#10003F",
         text: "rgb(255, 255, 255)",
         border_main_second: "rgb(44,0,143)",
+        coin_color: "#dbc6f7"
 
 
 
@@ -26,7 +27,8 @@ interface Colors {
     background_main: string,
     background_second: string,
     text: string;
-    border_main_second: string
+    border_main_second: string,
+    coin_color: string
 
 }
 

@@ -1,10 +1,9 @@
 import CoinComponent from "../../components/coin/coin";
-import ButtonIcon from "../../components/shared/button-icon/button-icon";
 import { useState } from "react";
 import TrowGameButtonComponent from "../../components/trow-game-button/trow-game-button";
-import refreshIcon from "../../assets/free-icon-refresh-5757986.png";
 import { Buttons, FlippedCoinsContainer } from "./flipped-coin-style";
-
+import refreshIcon from "../../assets/refresh-icon.svg";
+import ButtonIcon from "../../shared/button-icon/button-icon";
 const FlippedCoinComponent = () => {
   const [resetTrigger, setResetTrigger] = useState(0)
 
@@ -13,13 +12,14 @@ const FlippedCoinComponent = () => {
   };
   return (
     <FlippedCoinsContainer >
+      <CoinComponent key={resetTrigger} />
+
       <Buttons>
         <TrowGameButtonComponent />
         <ButtonIcon handleButton={resetGame}>
           <img src={refreshIcon} alt="Сбросить игру" width="40" height="40" />
         </ButtonIcon>
       </Buttons>
-      <CoinComponent key={resetTrigger} />
     </FlippedCoinsContainer>
 
   );
