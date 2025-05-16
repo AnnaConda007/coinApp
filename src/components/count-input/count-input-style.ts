@@ -2,14 +2,8 @@ import styled from 'styled-components';
 import { themeApp } from '../../style-config';
 import { motion } from 'framer-motion';
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  margin: 0 10px;
-`;
 
-export const InputContainer = styled.div<{ isActive?: boolean }>`
+export const InputContainerStyled = styled.div<{ isActive?: boolean }>`
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -23,7 +17,7 @@ export const InputContainer = styled.div<{ isActive?: boolean }>`
 
 
 
-export const Input = styled.input.attrs({
+export const InputStyled = styled.input.attrs({
   type: 'number',
 })`
   border: none;
@@ -41,7 +35,7 @@ color: ${themeApp.colors.text};
   }
 `;
 
-export const InputBtn = styled(motion.button) <{ left?: boolean, isActive: boolean }>`
+export const InputBtnStyled = styled(motion.button) <{ left?: boolean, isActive: boolean }>`
     font-size: 14px;
         outline: none;
 

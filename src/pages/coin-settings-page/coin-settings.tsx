@@ -1,5 +1,5 @@
-import SettingCoin from "../../components/setting-count/setting-coin";
 import { SettingsStyled } from "./coin-settings-style";
+import SettingCoin from "../../components/setting-coin/setting-coin";
 
 const CoinSettingsComponent = () => {
 

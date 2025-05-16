@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonStyled = styled.button`
+export const ButtonIconStyled = styled.button`
     background-color:transparent;
     border: none;
     padding: 5px;

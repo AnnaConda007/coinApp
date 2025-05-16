@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { themeApp } from '../../../../style-config';
+import { themeApp } from '../../../style-config';
 import { motion } from 'framer-motion';
 
-export const FlipButtonContainerStyled = styled.div`
+export const MainButtonContainerStyled = styled.div`
      display: flex;
     justify-content: center;
  width: 100%;
@@ -12,7 +12,7 @@ height: 40px;
  `;
 
 
-export const FlipButtonStyled = styled(motion.button)`
+export const MainButtonStyled = styled(motion.button)`
 background-color: transparent;
  border: none;
 color: white;

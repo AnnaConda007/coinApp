@@ -32,22 +32,12 @@ const coinSlice = createSlice({
       state.TotalCoinAmount = action.payload;
       localStorage.setItem("TotalCoinAmount", action.payload.toString())
     },
-    setCoinSuccessNum: (state) => {
-      const newValue = state.coinSuccessNum + 1
-      state.coinSuccessNum = newValue;
-    },
-    resetCoinSuccessNum: (state) => {
-      state.coinSuccessNum = 0;
-    }
-    ,
-    setOneCoinSuccessNum: (state, action: PayloadAction<CoinResult>) => {
-      const result = action.payload === CoinResult.INCREMENT ? 1 : -1;
-      state.coinSuccessNum += result
-    },
+
+
 
   }
 });
 
-export const { setSelectedCoinSide, resetSelectedCoinSide, setTotalCoinAmount, setCoinSuccessNum, resetCoinSuccessNum, setOneCoinSuccessNum } = coinSlice.actions;
+export const { setSelectedCoinSide, resetSelectedCoinSide, setTotalCoinAmount } = coinSlice.actions;
 
 export default coinSlice.reducer;

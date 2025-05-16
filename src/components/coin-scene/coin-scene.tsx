@@ -3,9 +3,9 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
-import { setSelectedCoinSide } from "../../../redux/coin-slice";
+import { setSelectedCoinSide } from "../../redux/coin-slice";
 import { useDispatch } from "react-redux";
-import { CoinSide } from "../../../enums/coin";
+import { CoinSide } from "../../enums/coin";
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils';
 
 interface CoinModelProps {
@@ -33,11 +33,11 @@ const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, sid
         if (!rotate || !cloned.current) return;
 
         const targetRotation = {
-            x: cloned.current.rotation.x + Math.PI * 4, // 2 оборота
+            x: cloned.current.rotation.x + Math.PI * 4,
             y: cloned.current.rotation.y + Math.PI * 4,
         };
 
-        const duration = 1000; // ms
+        const duration = 1000;
         const startTime = performance.now();
 
         const startRotation = {
@@ -93,7 +93,6 @@ const CoinLogic = ({ coinRef }: { coinRef: React.RefObject<THREE.Object3D> }) =>
 
 
 export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate = false }: { rotate?: boolean, pulse: number; side?: CoinSide, orbit?: boolean }) => {
-    console.log("передано", side)
     const coinRef = useRef<THREE.Object3D>(null!);
 
     return (
