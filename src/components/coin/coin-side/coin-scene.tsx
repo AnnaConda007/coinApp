@@ -11,6 +11,7 @@ import { clone } from 'three/examples/jsm/utils/SkeletonUtils';
 interface CoinModelProps {
     scale: number;
     side: CoinSide;
+    rotate: boolean
 
 }
 const coinMap: Record<CoinSide, [number, number, number]> = {
@@ -19,17 +20,50 @@ const coinMap: Record<CoinSide, [number, number, number]> = {
 };
 
 
-const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, side }, ref) => {
+const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, side, rotate }, ref) => {
     const { scene } = useGLTF('/models/scene.gltf');
-    const cloned = useRef<THREE.Object3D>(clone(scene)); // 👈 клонируем объект
+    const cloned = useRef<THREE.Object3D>(clone(scene));
 
     useEffect(() => {
         const [x, y, z] = coinMap[side];
         cloned.current.rotation.set(x, y, z);
     }, [side]);
 
+    useEffect(() => {
+        if (!rotate || !cloned.current) return;
+
+        const targetRotation = {
+            x: cloned.current.rotation.x + Math.PI * 4, // 2 оборота
+            y: cloned.current.rotation.y + Math.PI * 4,
+        };
+
+        const duration = 1000; // ms
+        const startTime = performance.now();
+
+        const startRotation = {
+            x: cloned.current.rotation.x,
+            y: cloned.current.rotation.y,
+        };
+
+        const animate = (time: number) => {
+            const elapsed = time - startTime;
+            const t = Math.min(elapsed / duration, 1); // от 0 до 1
+
+            cloned.current!.rotation.x = startRotation.x + (targetRotation.x - startRotation.x) * t;
+            cloned.current!.rotation.y = startRotation.y + (targetRotation.y - startRotation.y) * t;
+
+            if (t < 1) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }, [rotate]);
+
+
     return <primitive object={cloned.current} ref={ref} scale={scale} />;
 });
+
 
 
 
@@ -48,7 +82,7 @@ const CoinLogic = ({ coinRef }: { coinRef: React.RefObject<THREE.Object3D> }) =>
             const dot = forward.dot(toCamera);
 
             const isHeads = dot > 0;
-            const side: CoinSide = isHeads ? CoinSide.TAILS : CoinSide.HEADS
+            const side: CoinSide = isHeads ? CoinSide.HEADS : CoinSide.TAILS
             dispatch(setSelectedCoinSide(side))
         }
     });
@@ -58,8 +92,8 @@ const CoinLogic = ({ coinRef }: { coinRef: React.RefObject<THREE.Object3D> }) =>
 
 
 
-export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false }: { pulse: number; side?: CoinSide, orbit?: boolean }) => {
-
+export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate = false }: { rotate?: boolean, pulse: number; side?: CoinSide, orbit?: boolean }) => {
+    console.log("передано", side)
     const coinRef = useRef<THREE.Object3D>(null!);
 
     return (
@@ -72,8 +106,9 @@ export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false }: { pul
             <directionalLight color="#dbc6f7" position={[0, 1, -2]} intensity={3} />
             <directionalLight color="#dbc6f7" position={[0, 1, 2]} intensity={3} />
 
-            <CoinModel ref={coinRef} scale={pulse} side={side} />
-            <CoinLogic coinRef={coinRef} />
+            <CoinModel ref={coinRef} scale={pulse} side={side} rotate={rotate} />
+            {orbit && <CoinLogic coinRef={coinRef} />
+            }
             {orbit && (<OrbitControls minDistance={3} />
             )}
         </Canvas>

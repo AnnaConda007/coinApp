@@ -18,17 +18,16 @@ const FlippedCoinComponent = () => {
     shallowEqual
   );
 
-  const amountCoinArr = Array.from({ length: amountCoin });
+  const [trif, setTrif] = useState(0)
 
   const resetGame = () => {
     dispatch(resetCoinSuccessNum())
-    setResetKey((prev) => prev + 1);
+    setTrif((prev) => prev + 1)
   };
   return (
     <FlippedCoinsContainer >
 
 
-      <ResultComponent />
 
       <Buttons>
 
@@ -40,13 +39,8 @@ const FlippedCoinComponent = () => {
         </Button>
       </Buttons>
 
-      <Coins key={resetKey}>
-        {amountCoinArr.map((_, i) => (
-          <div key={i}>
-            <CoinComponent />
-          </div>
-        ))}
-      </Coins>
+      <CoinComponent key={trif} />
+
 
     </FlippedCoinsContainer>
 
