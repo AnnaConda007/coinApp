@@ -8,9 +8,9 @@ export const InputContainerStyled = styled.div<{ isActive?: boolean }>`
   align-items: center;
   border-radius: 10px;
   flex-grow: 1;
-  border:1px solid ${({ isActive }) => (isActive ? themeApp.colors.border_active : themeApp.colors.border_main)};
+  border:1px solid ${({ isActive }) => (isActive ? themeApp.colors.border_color_third : themeApp.colors.border_color_main)};
    &:hover {
-    border-color:    ${({ isActive }) => (isActive ? themeApp.colors.border_active : themeApp.colors.border_hover)}; 
+    border-color:    ${({ isActive }) => (isActive ? themeApp.colors.border_color_third : themeApp.colors.border_color_second)}; 
    }
 `;
 
@@ -27,7 +27,9 @@ export const InputStyled = styled.input.attrs({
   width: 100%;
   text-align: center;
    font-size: 14px;
-color: ${themeApp.colors.text};
+color: ${themeApp.colors.light_color};
+ font-family: ${themeApp.fonts.main_font};
+
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -44,23 +46,25 @@ export const InputBtnStyled = styled(motion.button) <{ left?: boolean, isActive:
   height: 100%; 
   font-size: 20px;
    border: none;
-  color: ${themeApp.colors.text};
+  color: ${themeApp.colors.light_color};
+  font-family: ${themeApp.fonts.main_font};
+
  
   ${({ left }) =>
     left
       ? `
-        border-right: 1px solid ${themeApp.colors.border_main};
+        border-right: 1px solid ${themeApp.colors.border_color_main};
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
       `
       : `
-        border-left: 1px solid ${themeApp.colors.border_main};
+        border-left: 1px solid ${themeApp.colors.border_color_main};
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
       `};
 
 &:active {
-  box-shadow: inset 0px 0px 5px   ${themeApp.colors.border_active};
+  box-shadow: inset 0px 0px 5px   ${themeApp.colors.border_color_third};
 
  }
 `;

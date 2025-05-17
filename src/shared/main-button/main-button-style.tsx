@@ -5,7 +5,7 @@ import { themeApp } from '../../style-config';
 export const MainButtonStyled = styled(motion.button)`
 background-color: transparent;
  color: white;
-border: 1px solid ${themeApp.colors.background_second};
+border: 1px solid ${themeApp.colors.background_color_second};
   padding: 0;
  width: 85%;
  border-radius: 10px;
@@ -13,6 +13,7 @@ font-size: 15px;
 font-weight:600;
  height: 40px;
  text-transform:uppercase;
+ font-family: ${themeApp.fonts.main_font};
 
 `
 

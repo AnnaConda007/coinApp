@@ -134,8 +134,8 @@ export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate 
                 width: '300px',
                 height: '300px',
             }} camera={{ position: [0, 0, 3] }}>
-            <directionalLight color={themeApp.colors.coin_color} position={[0, 1, -2]} intensity={3} />
-            <directionalLight color={themeApp.colors.coin_color} position={[0, 1, 2]} intensity={3} />
+            <directionalLight color={themeApp.colors.light_color} position={[0, 1, -2]} intensity={3} />
+            <directionalLight color={themeApp.colors.light_color} position={[0, 1, 2]} intensity={3} />
 
             <CoinModel ref={coinRef} scale={pulse} side={side} rotate={rotate} orbit={orbit} />
             {orbit && <CoinLogic coinRef={coinRef} />

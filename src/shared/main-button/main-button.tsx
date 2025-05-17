@@ -21,8 +21,8 @@ const MainButton: FC<MainButtonProps> = ({ handleButton, text }) => {
 
         >
             <ButtonShadow
-                initial={{ boxShadow: `2px 1px 5px ${themeApp.colors.border_active}` }}
-                animate={{ boxShadow: `1px 2px 10px ${themeApp.colors.border_active}` }}
+                initial={{ boxShadow: `2px 1px 5px ${themeApp.colors.border_color_third}` }}
+                animate={{ boxShadow: `1px 2px 10px ${themeApp.colors.border_color_third}` }}
                 transition={{
                     duration: 1,
                     repeat: Infinity,

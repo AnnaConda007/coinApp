@@ -1,4 +1,3 @@
-import './App.css';
 import CoinSettingsComponent from './pages/coin-settings-page/coin-settings';
 import { Provider } from "react-redux";
 import store from './redux/store';
@@ -13,11 +12,10 @@ function App() {
           <Route path="/" element={<CoinSettingsComponent />} />
           <Route path="/toss" element={<FlippedCoinComponent />} />
         </Routes>
-
       </BrowserRouter>
-
     </Provider>
   );
 }
+
 
 export default App;
