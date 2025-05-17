@@ -11,8 +11,7 @@ export const FlippedCoinsContainer = styled.div`
 
 
 export const Coins = styled.div`
-margin-top:20px;
-      width: 100%;
+       width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -23,7 +22,8 @@ margin-top:20px;
 export const Buttons = styled.div`
  display: flex;
  align-items: start;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
+     padding: 0 20px;
  `;
 
