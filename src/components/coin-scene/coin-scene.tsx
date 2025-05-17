@@ -35,8 +35,8 @@ const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, sid
         if (!rotate || !cloned.current) return;
 
         const targetRotation = {
-            x: cloned.current.rotation.x + Math.PI * 4,
-            y: cloned.current.rotation.y + Math.PI * 4,
+            x: cloned.current.rotation.x - Math.PI * 2, // 3 оборота назад
+            y: cloned.current.rotation.y,
         };
 
         const duration = 1000;
@@ -49,10 +49,12 @@ const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, sid
 
         const animate = (time: number) => {
             const elapsed = time - startTime;
-            const t = Math.min(elapsed / duration, 1); // от 0 до 1
+            const t = Math.min(elapsed / duration, 1); // 0 → 1
 
-            cloned.current!.rotation.x = startRotation.x + (targetRotation.x - startRotation.x) * t;
-            cloned.current!.rotation.y = startRotation.y + (targetRotation.y - startRotation.y) * t;
+            cloned.current!.rotation.x =
+                startRotation.x + (targetRotation.x - startRotation.x) * t;
+            cloned.current!.rotation.y =
+                startRotation.y + (targetRotation.y - startRotation.y) * t;
 
             if (t < 1) {
                 requestAnimationFrame(animate);
@@ -124,7 +126,7 @@ const CoinLogic = ({ coinRef }: { coinRef: React.RefObject<THREE.Object3D> }) =>
 
 
 
-export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate = false }: { rotate?: boolean, pulse: number; side?: CoinSide, orbit?: boolean }) => {
+export const CoinScene = ({ scale, side = CoinSide.TAILS, orbit = false, rotate = false }: { rotate?: boolean, scale: number; side?: CoinSide, orbit?: boolean }) => {
     const coinRef = useRef<THREE.Object3D>(null!);
 
     return (
@@ -133,11 +135,11 @@ export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate 
             style={{
                 width: '300px',
                 height: '300px',
-            }} camera={{ position: [0, 0, 3] }}>
+            }} camera={{ position: [0, 0, 2] }}>
             <directionalLight color={themeApp.colors.light_color} position={[0, 1, -2]} intensity={3} />
             <directionalLight color={themeApp.colors.light_color} position={[0, 1, 2]} intensity={3} />
 
-            <CoinModel ref={coinRef} scale={pulse} side={side} rotate={rotate} orbit={orbit} />
+            <CoinModel ref={coinRef} scale={scale} side={side} rotate={rotate} orbit={orbit} />
             {orbit && <CoinLogic coinRef={coinRef} />
             }
             {orbit && (<OrbitControls minDistance={3} />

@@ -30,7 +30,7 @@ const SettingCoin = () => {
 
   return (
     <Container>
-      <CoinScene pulse={coinScale} orbit={true} />
+      <CoinScene scale={coinScale} orbit={true} />
       <SettingInputComponent coinPulseAnimate={coinPulseAnimate} />
       <MainButtonContainerStyled>
         {selectedSide && amountCoin.toString() !== nullValue && (

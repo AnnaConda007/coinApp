@@ -26,6 +26,10 @@ export const GlobalStyle = createGlobalStyle`
 *::after {
   box-sizing: border-box;
 }
+button{
+  border: none;
+  background-color: transparent;
+}
 
   html {
     height: 100%;

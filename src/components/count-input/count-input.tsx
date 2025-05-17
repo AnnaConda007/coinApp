@@ -15,14 +15,13 @@ const SettingInputComponent: FC<SettingInputProps> = ({ coinPulseAnimate }) => {
     const [isActive, setIsActive] = useState<boolean>(false)
     const amountCoin = useSelector((state: RootStoreState) => state.coin.TotalCoinAmount);
 
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let input = event.target.value;
-        input = input.replace(/\D/g, "");
-        input = input.replace(/^0+/, "");
-        const nullValue = "0"
-        const emptyValue = ""
-        if (input === emptyValue) input = nullValue;
+
+        if (input[0] === "0") {
+            input = input.slice(1);
+        }
+
         dispatch(setTotalCoinAmount(Number(input)));
     };
 
@@ -55,7 +54,8 @@ const SettingInputComponent: FC<SettingInputProps> = ({ coinPulseAnimate }) => {
                 whileTap={{ scale: 0.7 }}
             > -
             </InputBtnStyled>
-            <InputStyled type="text" value={amountCoin} onChange={handleInputChange} />
+            <InputStyled type="text" value={String(amountCoin)}
+                onChange={handleInputChange} />
             <InputBtnStyled isActive={isActive} onClick={handleIncrease}
                 whileTap={{ scale: 0.7 }}
             >+</InputBtnStyled>
