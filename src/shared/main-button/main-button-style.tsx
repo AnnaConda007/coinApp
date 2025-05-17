@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
+import { themeApp } from '../../style-config';
 
 export const MainButtonStyled = styled(motion.button)`
 background-color: transparent;
- border: none;
-color: white;
-  border:1px solid  rgb(44,0,143);
+ color: white;
+border: 1px solid ${themeApp.colors.background_second};
   padding: 0;
  width: 85%;
  border-radius: 10px;
 font-size: 15px;
 font-weight:600;
  height: 40px;
- text-transform:uppercase
+ text-transform:uppercase;
 
 `
 

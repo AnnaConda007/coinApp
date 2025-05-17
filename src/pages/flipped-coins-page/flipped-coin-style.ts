@@ -22,7 +22,8 @@ margin-top:20px;
 
 export const Buttons = styled.div`
  display: flex;
+ align-items: start;
     justify-content: space-evenly;
     width: 100%;
-`;
+ `;
 

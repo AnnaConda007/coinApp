@@ -5,7 +5,7 @@ export const themeApp: CoinStyle = {
         border_active: "rgb(85, 31, 171)",
         background_main: "#030016",
         background_second: "#10003F",
-        text: "rgb(255, 255, 255)",
+        text: "#ffffff",
         border_main_second: "rgb(44,0,143)",
         coin_color: "#dbc6f7"
 

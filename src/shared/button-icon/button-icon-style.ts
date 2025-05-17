@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
-export const ButtonIconStyled = styled.button`
-    background-color:transparent;
-    border: none;
-    padding: 5px;
+
+import { motion } from 'framer-motion';
+
+export const ButtonIconStyled = styled(motion.button)`
+    
     cursor: pointer; 
     border-radius: 50%;
-    color: red;
-      `;
+    border: 1px solid wheat;
+    background-color:transparent;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+ 
+ `;
+

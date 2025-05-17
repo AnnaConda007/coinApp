@@ -12,7 +12,8 @@ import { themeApp } from "../../style-config";
 interface CoinModelProps {
     scale: number;
     side: CoinSide;
-    rotate: boolean
+    rotate: boolean,
+    orbit: boolean
 
 }
 const coinMap: Record<CoinSide, [number, number, number]> = {
@@ -21,7 +22,7 @@ const coinMap: Record<CoinSide, [number, number, number]> = {
 };
 
 
-const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, side, rotate }, ref) => {
+const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, side, rotate, orbit }, ref) => {
     const { scene } = useGLTF('/models/scene.gltf');
     const cloned = useRef<THREE.Object3D>(clone(scene));
 
@@ -60,6 +61,36 @@ const CoinModel = React.forwardRef<THREE.Object3D, CoinModelProps>(({ scale, sid
 
         requestAnimationFrame(animate);
     }, [rotate]);
+
+    useEffect(() => {
+        if (orbit) {
+            const duration = 2000;
+            const delay = 300;
+
+            const startY = cloned.current.rotation.y;
+            const endY = startY + Math.PI * 2;
+
+            let startTime: number;
+
+            const animate = (time: number) => {
+                if (!startTime) startTime = time;
+                const elapsed = time - startTime;
+                const t = Math.min(elapsed / duration, 1);
+
+                const y = startY + (endY - startY) * t;
+                cloned.current!.rotation.y = y;
+
+                if (t < 1) {
+                    requestAnimationFrame(animate);
+                }
+            };
+
+            setTimeout(() => {
+                requestAnimationFrame(animate);
+            }, delay);
+        }
+    }, [orbit, rotate]);
+
 
 
     return <primitive object={cloned.current} ref={ref} scale={scale} />;
@@ -106,7 +137,7 @@ export const CoinScene = ({ pulse, side = CoinSide.TAILS, orbit = false, rotate 
             <directionalLight color={themeApp.colors.coin_color} position={[0, 1, -2]} intensity={3} />
             <directionalLight color={themeApp.colors.coin_color} position={[0, 1, 2]} intensity={3} />
 
-            <CoinModel ref={coinRef} scale={pulse} side={side} rotate={rotate} />
+            <CoinModel ref={coinRef} scale={pulse} side={side} rotate={rotate} orbit={orbit} />
             {orbit && <CoinLogic coinRef={coinRef} />
             }
             {orbit && (<OrbitControls minDistance={3} />

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { themeApp } from '../../style-config';
-import { motion } from 'framer-motion';
-
 
 export const SpanStyled = styled.span` 
-color: red;
+ color: ${themeApp.colors.text};
+ font-weight: 400;
+ font-size: small;
 `;
 
 

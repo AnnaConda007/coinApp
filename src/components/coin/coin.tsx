@@ -45,7 +45,7 @@ const CoinComponent = () => {
 
 
       <SpanStyled>
-        {selectedCoinSide} выпал {successSum} из {TotalCoinAmount}
+        {selectedCoinSide}  {successSum} из {TotalCoinAmount}
       </SpanStyled>
 
 
