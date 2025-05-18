@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
 
 @font-face {
   font-family: "RubikVinyl";
-  src: url("../src/assets/fonts/RubikVinyl-Regular.ttf");
+src: url("/fonts/RubikWetPaint-Regular.ttf");
  
 }
 
@@ -36,7 +36,7 @@ button{
   }
 
   body {
-  font-family: cursive;
+  font-family: "RubikVinyl";
 -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100%;

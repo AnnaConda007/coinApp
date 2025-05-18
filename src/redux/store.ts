@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit"; 
+import { configureStore } from "@reduxjs/toolkit";
 import coinSlice from "./coin-slice";
- 
+
 const store = configureStore({
-  reducer: { 
+  reducer: {
     coin: coinSlice,
-    },
+  },
 });
 export type RootStoreState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

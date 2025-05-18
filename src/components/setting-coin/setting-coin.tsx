@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Container, MainButtonContainerStyled } from "./setting-coin-style";
@@ -11,13 +10,15 @@ import SettingInputComponent from "../count-input/count-input";
 const SettingCoin = () => {
   const selectedSide = useSelector(
     (state: RootStoreState) => state.coin.selectedCoinSide,
-    shallowEqual
+    shallowEqual,
   );
 
   const navigate = useNavigate();
-  const amountCoin = useSelector((state: RootStoreState) => state.coin.TotalCoinAmount);
+  const amountCoin = useSelector(
+    (state: RootStoreState) => state.coin.TotalCoinAmount,
+  );
   const [coinScale, setCoinScale] = useState(150);
-  const nullValue = "0"
+  const nullValue = "0";
 
   const coinPulseAnimate = () => {
     setCoinScale(152);
@@ -26,27 +27,21 @@ const SettingCoin = () => {
     }, 200);
   };
 
-
-
   return (
     <Container>
       <CoinScene scale={coinScale} orbit={true} />
       <SettingInputComponent coinPulseAnimate={coinPulseAnimate} />
       <MainButtonContainerStyled>
         {selectedSide && amountCoin.toString() !== nullValue && (
-          <MainButton key={amountCoin}
-            text={"flip"} handleButton={() => navigate("/toss")}>
-          </MainButton>
+          <MainButton
+            key={amountCoin}
+            text={"flip"}
+            handleButton={() => navigate("/toss")}
+          ></MainButton>
         )}
       </MainButtonContainerStyled>
-
-
     </Container>
   );
 };
 
-
-export default SettingCoin
-
-
-
+export default SettingCoin;

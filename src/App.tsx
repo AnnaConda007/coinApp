@@ -1,7 +1,7 @@
-import CoinSettingsComponent from './pages/coin-settings-page/coin-settings';
+import CoinSettingsComponent from "./pages/coin-settings-page/coin-settings";
 import { Provider } from "react-redux";
-import store from './redux/store';
-import FlippedCoinComponent from './pages/flipped-coins-page/flipped-coin';
+import store from "./redux/store";
+import FlippedCoinComponent from "./pages/flipped-coins-page/flipped-coin";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -16,6 +16,5 @@ function App() {
     </Provider>
   );
 }
-
 
 export default App;

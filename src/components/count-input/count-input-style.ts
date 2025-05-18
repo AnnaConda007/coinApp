@@ -1,24 +1,28 @@
-import styled from 'styled-components';
-import { themeApp } from '../../style-config';
-import { motion } from 'framer-motion';
+import styled from "styled-components";
+import { themeApp } from "../../style-config";
+import { motion } from "framer-motion";
 
-
-export const InputContainerStyled = styled.div<{ isActive?: boolean }>`
+export const InputContainerStyled = styled.div<{ $isActive?: boolean }>`
   display: flex;
-  align-items: center;
   border-radius: 10px;
-  flex-grow: 1;
-  border:1px solid ${({ isActive }) => (isActive ? themeApp.colors.border_color_third : themeApp.colors.border_color_main)};
-   &:hover {
-    border-color:    ${({ isActive }) => (isActive ? themeApp.colors.border_color_third : themeApp.colors.border_color_second)}; 
-   }
+  margin: 0 auto;
+
+  width: 150px;
+  border: 1px solid
+    ${({ $isActive }) =>
+      $isActive
+        ? themeApp.colors.border_color_third
+        : themeApp.colors.border_color_main};
+  &:hover {
+    border-color: ${({ $isActive }) =>
+      $isActive
+        ? themeApp.colors.border_color_third
+        : themeApp.colors.border_color_second};
+  }
 `;
 
-
-
-
 export const InputStyled = styled.input.attrs({
-  type: 'number',
+  type: "number",
 })`
   border: none;
   background: transparent;
@@ -26,10 +30,9 @@ export const InputStyled = styled.input.attrs({
   height: 30px;
   width: 100%;
   text-align: center;
-   font-size: 14px;
-color: ${themeApp.colors.light_color};
- font-family: ${themeApp.fonts.main_font};
-
+  font-size: 14px;
+  color: ${themeApp.colors.light_color};
+  font-family: ${themeApp.fonts.main_font};
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -37,21 +40,23 @@ color: ${themeApp.colors.light_color};
   }
 `;
 
-export const InputBtnStyled = styled(motion.button) <{ left?: boolean, isActive: boolean }>`
-    font-size: 14px;
-        outline: none;
+export const InputBtnStyled = styled(motion.button)<{
+  $left?: boolean;
+  $isActive: boolean;
+}>`
+  font-size: 14px;
+  outline: none;
 
-    background-color: transparent;
+  background-color: transparent;
   cursor: pointer;
-  height: 100%; 
+  height: 100%;
   font-size: 20px;
-   border: none;
+  border: none;
   color: ${themeApp.colors.light_color};
   font-family: ${themeApp.fonts.main_font};
 
- 
-  ${({ left }) =>
-    left
+  ${({ $left }) =>
+    $left
       ? `
         border-right: 1px solid ${themeApp.colors.border_color_main};
         border-top-left-radius: 10px;
@@ -63,8 +68,7 @@ export const InputBtnStyled = styled(motion.button) <{ left?: boolean, isActive:
         border-bottom-right-radius: 10px;
       `};
 
-&:active {
-  box-shadow: inset 0px 0px 5px   ${themeApp.colors.border_color_third};
-
- }
+  &:active {
+    box-shadow: inset 0px 0px 5px ${themeApp.colors.border_color_third};
+  }
 `;

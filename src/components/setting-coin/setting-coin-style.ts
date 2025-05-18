@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -8,10 +7,8 @@ export const Container = styled.div`
   margin: 0 10px;
 `;
 
-
-
 export const MainButtonContainerStyled = styled.div`
-     display: flex;
-    justify-content: center;
- height:40px;
-  `;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+`;

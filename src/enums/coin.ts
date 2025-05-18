@@ -3,9 +3,7 @@ export enum CoinSide {
   TAILS = "Рубль",
 }
 
-
-
 export enum CoinResult {
-  INCREMENT = 'increment',
-  DECREMENT = 'decrement',
+  INCREMENT = "increment",
+  DECREMENT = "decrement",
 }

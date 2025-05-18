@@ -5,13 +5,13 @@ import { Buttons, FlippedCoinsContainer } from "./flipped-coin-style";
 import refreshIcon from "../../assets/refresh-icon.svg";
 import ButtonIcon from "../../shared/button-icon/button-icon";
 const FlippedCoinComponent = () => {
-  const [resetTrigger, setResetTrigger] = useState(0)
+  const [resetTrigger, setResetTrigger] = useState(0);
 
   const resetGame = () => {
-    setResetTrigger((prev) => prev + 1)
+    setResetTrigger((prev) => prev + 1);
   };
   return (
-    <FlippedCoinsContainer >
+    <FlippedCoinsContainer>
       <CoinComponent key={resetTrigger} />
 
       <Buttons>
@@ -21,10 +21,7 @@ const FlippedCoinComponent = () => {
         </ButtonIcon>
       </Buttons>
     </FlippedCoinsContainer>
-
   );
 };
 
 export default FlippedCoinComponent;
-
-
