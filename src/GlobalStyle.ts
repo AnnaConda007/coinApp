@@ -5,8 +5,8 @@ export const GlobalStyle = createGlobalStyle`
 
 
 @font-face {
-  font-family: "RubikVinyl";
-src: url("/fonts/RubikWetPaint-Regular.ttf");
+  font-family: "ShantellSans";
+src: url("/fonts/ShantellSans-VariableFont.ttf");
  
 }
 
@@ -36,7 +36,7 @@ button{
   }
 
   body {
-  font-family: "RubikVinyl";
+  font-family: "ShantellSans";
 -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100%;
